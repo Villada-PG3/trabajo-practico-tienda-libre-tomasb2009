@@ -31,6 +31,7 @@ class Producto(models.Model):
     marca = models.CharField(max_length=50, default="Marca Desconocida")
     imagen = models.ImageField(
         upload_to="productos/",
+        default="productos/default.png",
         blank=True,
         null=True
     )
