@@ -1,75 +1,50 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Acerca de mí</title>
+{% extends "tiendalibre/base.html" %} {% block title %} Acerca de mí | Tienda
+Libre {% endblock %} {% block content %}
 
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #eef2f7;
-        color: #333;
-        margin: 0;
-      }
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+      <div class="card shadow border-0">
+        <div class="card-body p-5">
+          <h1 class="text-primary text-center mb-4">
+            👋 ¡Hola! Soy Tomás Barragán
+          </h1>
 
-      .contenedor {
-        width: 650px;
-        margin: 60px auto;
-        background: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
+          <p class="lead">
+            Soy estudiante de programación, con un gran interés por el
+            desarrollo de software y las nuevas tecnologías.
+          </p>
 
-      h1 {
-        color: #0d6efd;
-        text-align: center;
-      }
+          <p>
+            Disfruto aprender, enfrentar desafíos y convertir ideas en proyectos
+            reales.
+          </p>
 
-      h2 {
-        color: #444;
-        margin-top: 25px;
-      }
+          <h2 class="h4 mt-5 mb-3">💻 Tecnologías que estoy aprendiendo</h2>
 
-      ul {
-        line-height: 1.8;
-      }
+          <ul class="list-group mb-4">
+            <li class="list-group-item">Python</li>
 
-      footer {
-        text-align: center;
-        margin-top: 30px;
-        color: gray;
-        font-size: 14px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="contenedor">
-      <h1>👋 ¡Hola! Soy Tomás Barragán</h1>
+            <li class="list-group-item">Django</li>
 
-      <p>
-        Soy estudiante de programación e Ingeniería en Sistemas, con un gran
-        interés por el desarrollo de software y las nuevas tecnologías. Disfruto
-        aprender, enfrentar desafíos y convertir ideas en proyectos reales.
-      </p>
+            <li class="list-group-item">HTML y CSS</li>
 
-      <h2>💻 Tecnologías que estoy aprendiendo</h2>
-      <ul>
-        <li>Python</li>
-        <li>Django</li>
-        <li>HTML y CSS</li>
-        <li>SQL y Bases de Datos</li>
-        <li>Git y GitHub</li>
-      </ul>
+            <li class="list-group-item">SQL y Bases de Datos</li>
 
-      <h2>🚀 Objetivos</h2>
-      <p>
-        Mi objetivo es convertirme en un desarrollador full stack, crear
-        aplicaciones útiles y seguir creciendo profesionalmente mientras
-        adquiero experiencia en el mundo del desarrollo de software.
-      </p>
+            <li class="list-group-item">Git y GitHub</li>
+          </ul>
 
-      <footer>Proyecto realizado con Django • 2026</footer>
+          <h2 class="h4 mt-5 mb-3">🚀 Objetivos</h2>
+
+          <p>
+            Mi objetivo es convertirme en un desarrollador full stack, crear
+            aplicaciones útiles y seguir creciendo profesionalmente mientras
+            adquiero experiencia en el mundo del desarrollo de software.
+          </p>
+        </div>
+      </div>
     </div>
-  </body>
-</html>
+  </div>
+</div>
+
+{% endblock %}

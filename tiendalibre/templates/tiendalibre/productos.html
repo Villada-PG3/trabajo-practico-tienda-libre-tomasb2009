@@ -1,217 +1,23 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tienda Libre</title>
+{% extends "tiendalibre/base.html" %} {% block title %} Productos | Tienda Libre
+{% endblock %} {% block content %}
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
-      }
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="display-5 fw-bold text-primary">Productos</h1>
 
-      body {
-        background: linear-gradient(135deg, #eef2ff, #dbeafe);
-        min-height: 100vh;
-        padding: 40px;
-      }
+    <p class="lead text-secondary">Todos nuestros productos disponibles</p>
+  </div>
 
-      .container {
-        max-width: 1200px;
-        margin: auto;
-      }
-
-      .titulo {
-        text-align: center;
-        margin-bottom: 35px;
-      }
-
-      .titulo h1 {
-        font-size: 42px;
-        color: #1e3a8a;
-        margin-bottom: 10px;
-      }
-
-      .titulo p {
-        color: #555;
-        font-size: 18px;
-      }
-
-      .card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      thead {
-        background: #2563eb;
-      }
-
-      thead th {
-        color: white;
-        padding: 20px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 15px;
-      }
-
-      tbody tr {
-        transition: 0.3s;
-      }
-
-      tbody tr:nth-child(even) {
-        background: #f8fafc;
-      }
-
-      tbody tr:hover {
-        background: #eff6ff;
-        transform: scale(1.01);
-      }
-
-      td {
-        padding: 20px;
-        border-bottom: 1px solid #e5e7eb;
-        text-align: center;
-        vertical-align: middle;
-      }
-
-      td img {
-        width: 90px;
-        height: 90px;
-        object-fit: cover;
-        border-radius: 15px;
-        border: 2px solid #ddd;
-        transition: 0.3s;
-      }
-
-      td img:hover {
-        transform: scale(1.1);
-      }
-
-      .sin-imagen {
-        width: 90px;
-        height: 90px;
-        margin: auto;
-        border-radius: 15px;
-        background: #ececec;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #777;
-        font-size: 14px;
-        border: 2px dashed #bbb;
-      }
-
-      .nombre {
-        text-align: left;
-      }
-
-      .nombre h3 {
-        color: #222;
-        margin-bottom: 5px;
-        font-size: 22px;
-      }
-
-      .nombre span {
-        color: #888;
-        font-size: 14px;
-      }
-
-      .precio {
-        color: #2563eb;
-        font-size: 24px;
-        font-weight: bold;
-      }
-
-      .badge {
-        display: inline-block;
-        padding: 8px 18px;
-        border-radius: 30px;
-        color: white;
-        font-weight: bold;
-      }
-
-      .verde {
-        background: #16a34a;
-      }
-
-      .amarillo {
-        background: #f59e0b;
-      }
-
-      .rojo {
-        background: #dc2626;
-      }
-
-      .vacio {
-        padding: 50px;
-        color: #777;
-        font-size: 18px;
-      }
-
-      footer {
-        text-align: center;
-        margin-top: 25px;
-        color: #666;
-        font-size: 15px;
-      }
-
-      @media (max-width: 800px) {
-        table,
-        thead,
-        tbody,
-        th,
-        td,
-        tr {
-          display: block;
-        }
-
-        thead {
-          display: none;
-        }
-
-        tr {
-          margin: 20px;
-          background: white;
-          border-radius: 15px;
-          overflow: hidden;
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        td {
-          border: none;
-        }
-
-        .nombre {
-          text-align: center;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="titulo">
-        <h1>🛒 Tienda Libre</h1>
-        <p>Catálogo de productos disponibles</p>
-      </div>
-
-      <div class="card">
-        <table>
-          <thead>
+  <div class="card shadow border-0">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-primary">
             <tr>
-              <th>Imagen</th>
+              <th class="text-center">Imagen</th>
               <th>Producto</th>
-              <th>Precio</th>
-              <th>Stock</th>
+              <th class="text-center">Precio</th>
+              <th class="text-center">Stock</th>
             </tr>
           </thead>
 
@@ -219,45 +25,58 @@
             {% for producto in productos %}
 
             <tr>
-              <td>
+              <td class="text-center">
                 {% if producto.imagen %}
 
                 <img
                   src="{{ producto.imagen.url }}"
                   alt="{{ producto.nombre }}"
-                  onerror="
-                    this.onerror = null;
-                    this.src = '/media/productos/default.jpg';
-                  "
+                  class="rounded-3 border"
+                  style="width: 90px; height: 90px; object-fit: cover"
                 />
+
                 {% else %}
-                <div class="sin-imagen">Sin imagen</div>
+
+                <div
+                  class="bg-light border rounded-3 d-flex align-items-center justify-content-center mx-auto text-secondary"
+                  style="width: 90px; height: 90px"
+                >
+                  Sin imagen
+                </div>
+
                 {% endif %}
               </td>
 
-              <td class="nombre">
-                <h3>{{ producto.nombre }}</h3>
-                <span>Producto #{{ producto.id }}</span>
+              <td>
+                <h5 class="mb-1">{{ producto.nombre }}</h5>
+
+                <small class="text-secondary">
+                  Producto #{{ producto.id }}
+                </small>
               </td>
 
-              <td class="precio">$ {{ producto.precio }}</td>
+              <td class="text-center">
+                <span class="fs-5 fw-bold text-primary">
+                  $ {{ producto.precio }}
+                </span>
+              </td>
 
-              <td>
+              <td class="text-center">
                 {% if producto.stock > 10 %}
 
-                <span class="badge verde">
+                <span class="badge bg-success">
                   {{ producto.stock }} disponibles
                 </span>
 
                 {% elif producto.stock > 0 %}
 
-                <span class="badge amarillo">
+                <span class="badge bg-warning text-dark">
                   {{ producto.stock }} disponibles
                 </span>
 
                 {% else %}
 
-                <span class="badge rojo"> Sin stock </span>
+                <span class="badge bg-danger"> Sin stock </span>
 
                 {% endif %}
               </td>
@@ -266,15 +85,17 @@
             {% empty %}
 
             <tr>
-              <td colspan="4" class="vacio">No hay productos disponibles.</td>
+              <td colspan="4" class="text-center py-5 text-secondary">
+                No hay productos disponibles.
+              </td>
             </tr>
 
             {% endfor %}
           </tbody>
         </table>
       </div>
-
-      <footer>© 2026 - Tienda Libre | Desarrollado con Django</footer>
     </div>
-  </body>
-</html>
+  </div>
+</div>
+
+{% endblock %}

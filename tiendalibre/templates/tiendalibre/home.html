@@ -1,12 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hola mundo<h1/>
-    <h1>Bienvenida<h1/>
-</body>
-</html>
+{% extends "tiendalibre/base.html" %} {% block title %} Inicio | Tienda Libre
+{%endblock %} {% block content %}
+
+<div class="container py-5">
+  <div class="text-center">
+    <h1 class="display-4 fw-bold text-primary">Hola mundo 👋</h1>
+
+    <h2 class="mt-3">¡Bienvenido a Tienda Libre!</h2>
+
+    <p class="lead mt-3">Encontrá los mejores productos en nuestra tienda.</p>
+
+    <div class="mt-4">
+      <a href="{% url 'tiendalibre:productos' %}" class="btn btn-primary me-2">
+        Ver productos
+      </a>
+
+      <a
+        href="{% url 'tiendalibre:acerca-de-mi' %}"
+        class="btn btn-outline-secondary"
+      >
+        Acerca de mí
+      </a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
