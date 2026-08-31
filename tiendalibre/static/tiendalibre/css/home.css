@@ -1,0 +1,33 @@
+.home-hero {
+  background-color: #f8f9fa;
+  border-radius: 0.75rem;
+  padding: 3rem 2rem;
+}
+
+.home-title {
+  color: #0d6efd;
+}
+
+.home-subtitle {
+  color: #6c757d;
+}
+
+.stock-alto {
+  color: #198754;
+  font-weight: 600;
+}
+
+.stock-medio {
+  color: #fd7e14;
+  font-weight: 600;
+}
+
+.stock-bajo {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.stock-agotado {
+  color: #6c757d;
+  font-weight: 600;
+}

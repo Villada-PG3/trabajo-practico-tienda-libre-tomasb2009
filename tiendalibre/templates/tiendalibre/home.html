@@ -1,13 +1,17 @@
-{% extends "tiendalibre/base.html" %} {% block title %} Inicio | Tienda Libre
-{%endblock %} {% block content %}
+{% extends "tiendalibre/base.html" %} {% load static %} {% block title %} Inicio
+| Tienda Libre {% endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'tiendalibre/css/home.css' %}" />
+{% endblock %} {% block content %}
 
 <div class="container py-5">
-  <div class="text-center">
-    <h1 class="display-4 fw-bold text-primary">Hola mundo 👋</h1>
+  <div class="text-center home-hero">
+    <h1 class="display-4 fw-bold home-title">Hola mundo 👋</h1>
 
     <h2 class="mt-3">¡Bienvenido a Tienda Libre!</h2>
 
-    <p class="lead mt-3">Encontrá los mejores productos en nuestra tienda.</p>
+    <p class="lead mt-3 home-subtitle">
+      Encontrá los mejores productos en nuestra tienda.
+    </p>
 
     <div class="mt-4">
       <a href="{% url 'tiendalibre:productos' %}" class="btn btn-primary me-2">
@@ -21,6 +25,64 @@
         Acerca de mí
       </a>
     </div>
+
+    {% if usuario_logueado %}
+    <p class="mt-3 text-success">Sesión iniciada</p>
+    {% else %}
+    <p class="mt-3 text-muted">Visitante</p>
+    {% endif %}
+  </div>
+
+  <h2 class="mt-5 mb-4">
+    {{ titulo }}
+    <small class="text-muted"
+      >({{ productos_destacados|length }} productos)</small
+    >
+  </h2>
+
+  <div class="row g-3">
+    {% for producto in productos_destacados %}
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ producto.nombre|title }}</h5>
+
+          <p class="card-text text-muted small">
+            {{ producto.descripcion|truncatechars:50 }}
+          </p>
+
+          <p class="card-text">
+            {% if producto.precio %} ${{ producto.precio|floatformat:2 }} 
+            {% else %}
+            <span class="text-muted"
+              >{{ producto.precio|default:"Consultar precio" }}</span
+            >
+            {% endif %}
+          </p>
+
+          <p class="card-text small text-muted">
+            Ingresó: {{ producto.fecha_ingreso|date:"d/m/Y" }}
+          </p>
+
+          {% if producto.stock == 0 %}
+          <p class="stock-agotado">Stock: {{ producto.stock }}</p>
+          {% elif producto.stock <= 5 %}
+          <p class="stock-bajo">Stock: {{ producto.stock }}</p>
+          {% elif producto.stock <= 15 %}
+          <p class="stock-medio">Stock: {{ producto.stock }}</p>
+          {% else %}
+          <p class="stock-alto">Stock: {{ producto.stock }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+      <p class="text-center text-muted">
+        No hay productos destacados por el momento.
+      </p>
+    </div>
+    {% endfor %}
   </div>
 </div>
 
