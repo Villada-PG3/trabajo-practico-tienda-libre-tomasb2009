@@ -13,14 +13,13 @@ from .models import Producto
 
 
 def productos(request):
-    lista_productos = Producto.objects.all()
+    lista_productos = Producto.objects.order_by("-fecha_creacion")[:3]
 
     contexto = {
         "productos": lista_productos
     }
 
-    return render(request, "tiendalibre/productos.html", contexto)
-
+    return render(request, "tiendalibre/catalogo.html", contexto)
 
 def home(request):
     productos_destacados = [
