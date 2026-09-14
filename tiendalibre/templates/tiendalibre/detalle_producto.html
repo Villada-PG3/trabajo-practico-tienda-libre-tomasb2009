@@ -1,0 +1,166 @@
+```html
+{% extends "tiendalibre/base.html" %}
+
+{% block title %}
+{{ producto.nombre }} | Tienda Libre
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+  <div class="row align-items-center">
+
+
+    <!-- IMAGEN DEL PRODUCTO -->
+
+    <div class="col-md-6 text-center mb-4 mb-md-0">
+
+      {% if producto.imagen %}
+
+      <img
+        src="{{ producto.imagen.url }}"
+        alt="{{ producto.nombre }}"
+        class="img-fluid rounded-4 shadow"
+        style="max-height: 450px; object-fit: cover"
+      />
+
+      {% else %}
+
+      <div
+        class="bg-light border rounded-4 d-flex align-items-center justify-content-center mx-auto text-secondary"
+        style="width: 100%; max-width: 450px; height: 400px"
+      >
+        Sin imagen
+      </div>
+
+      {% endif %}
+
+    </div>
+
+
+    <!-- INFORMACIÓN DEL PRODUCTO -->
+
+    <div class="col-md-6">
+
+      <small class="text-secondary">
+        Producto #{{ producto.id }}
+      </small>
+
+
+      <h1 class="display-5 fw-bold text-primary mt-2">
+        {{ producto.nombre }}
+      </h1>
+
+
+      <p class="fs-3 fw-bold text-dark">
+        $ {{ producto.precio }}
+      </p>
+
+
+      <hr>
+
+
+      <!-- DESCRIPCIÓN -->
+
+      <h5>Descripción</h5>
+
+      <p class="text-secondary">
+        {{ producto.descripcion }}
+      </p>
+
+
+      <!-- MARCA -->
+
+      <p>
+        <strong>Marca:</strong>
+        {{ producto.marca }}
+      </p>
+
+
+      <!-- CATEGORÍA -->
+
+      <p>
+
+        <strong>Categoría:</strong>
+
+        {% if producto.categoria %}
+          {{ producto.categoria }}
+        {% else %}
+          Sin categoría
+        {% endif %}
+
+      </p>
+
+
+      <!-- STOCK -->
+
+      <p>
+        <strong>Stock:</strong>
+
+        {% if producto.stock > 10 %}
+
+        <span class="badge bg-success">
+          {{ producto.stock }} disponibles
+        </span>
+
+        {% elif producto.stock > 0 %}
+
+        <span class="badge bg-warning text-dark">
+          {{ producto.stock }} disponibles
+        </span>
+
+        {% else %}
+
+        <span class="badge bg-danger">
+          Sin stock
+        </span>
+
+        {% endif %}
+
+      </p>
+
+
+      <!-- ESTADO -->
+
+      <p>
+        <strong>Estado:</strong>
+
+        {% if producto.activo %}
+
+        <span class="badge bg-success">
+          Disponible
+        </span>
+
+        {% else %}
+
+        <span class="badge bg-secondary">
+          No disponible
+        </span>
+
+        {% endif %}
+
+      </p>
+
+
+      <!-- BOTÓN VOLVER -->
+
+      <div class="mt-4">
+
+        <a
+          href="{% url 'tiendalibre:catalogo' %}"
+          class="btn btn-secondary"
+        >
+          ← Volver al catálogo
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}
+```

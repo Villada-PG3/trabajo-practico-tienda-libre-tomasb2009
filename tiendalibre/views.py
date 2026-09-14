@@ -8,7 +8,7 @@ class ProductosTemplateView(TemplateView):
 from datetime import date
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .models import Producto
 
 
@@ -77,3 +77,13 @@ def home(request):
 
 def acerca_de_mi(request):
     return render(request, "tiendalibre/acerca-de-mi.html")
+
+
+def detalle_producto(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+
+    contexto = {
+        "producto": producto
+    }
+
+    return render(request, "tiendalibre/detalle_producto.html", contexto)

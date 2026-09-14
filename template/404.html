@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>404 - Página no encontrada</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            text-align: center;
+            padding: 50px 30px;
+        }
+
+        .error-number {
+            font-size: clamp(100px, 20vw, 180px);
+            font-weight: 900;
+            line-height: 1;
+            color: #168cff;
+            letter-spacing: -10px;
+            text-shadow: 0 0 35px rgba(22, 140, 255, 0.25);
+        }
+
+        .line {
+            width: 70px;
+            height: 4px;
+            background: #168cff;
+            margin: 25px auto;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #bdbdbd;
+            font-size: 17px;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #168cff;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.25s ease;
+            box-shadow: 0 8px 25px rgba(22, 140, 255, 0.2);
+        }
+
+        .button:hover {
+            background: #006edc;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(22, 140, 255, 0.35);
+        }
+
+        .code {
+            margin-top: 35px;
+            color: #555;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <div class="error-number">404</div>
+
+        <div class="line"></div>
+
+        <h1>Página no encontrada</h1>
+
+        <p>
+            Lo sentimos, la página que estás buscando no existe,
+            fue movida o ya no está disponible.
+        </p>
+
+        <a href="/" class="button">
+            Volver al inicio
+        </a>
+
+        <div class="code">
+            ERROR 404
+        </div>
+
+    </main>
+
+</body>
+</html>
