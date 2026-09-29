@@ -1,4 +1,3 @@
-```html
 {% extends "tiendalibre/base.html" %}
 
 {% block title %}
@@ -45,8 +44,6 @@ Productos | Tienda Libre
 
             <tr>
 
-              <!-- IMAGEN -->
-
               <td class="text-center">
 
                 {% if producto.imagen %}
@@ -54,15 +51,14 @@ Productos | Tienda Libre
                 <img
                   src="{{ producto.imagen.url }}"
                   alt="{{ producto.nombre }}"
-                  class="rounded-3 border"
-                  style="width: 90px; height: 90px; object-fit: cover"
+                  class="producto-thumb"
+                  loading="lazy"
                 />
 
                 {% else %}
 
                 <div
-                  class="bg-light border rounded-3 d-flex align-items-center justify-content-center mx-auto text-secondary"
-                  style="width: 90px; height: 90px"
+                  class="sin-imagen-thumb bg-light border rounded-3 d-flex align-items-center justify-content-center mx-auto text-secondary"
                 >
                   Sin imagen
                 </div>
@@ -70,9 +66,6 @@ Productos | Tienda Libre
                 {% endif %}
 
               </td>
-
-
-              <!-- PRODUCTO -->
 
               <td>
 
@@ -86,9 +79,6 @@ Productos | Tienda Libre
 
               </td>
 
-
-              <!-- PRECIO -->
-
               <td class="text-center">
 
                 <span class="fs-5 fw-bold text-primary">
@@ -96,9 +86,6 @@ Productos | Tienda Libre
                 </span>
 
               </td>
-
-
-              <!-- STOCK -->
 
               <td class="text-center">
 
@@ -123,9 +110,6 @@ Productos | Tienda Libre
                 {% endif %}
 
               </td>
-
-
-              <!-- BOTÓN DETALLE -->
 
               <td class="text-center">
 
@@ -169,4 +153,3 @@ Productos | Tienda Libre
 </div>
 
 {% endblock %}
-```
