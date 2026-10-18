@@ -1,15 +1,11 @@
 from django.urls import path
-from . import views
+from tiendalibre.views import HomeView, CatalogoView, acerca_de_mi, detalle_producto
 
 app_name = "tiendalibre"
 
 urlpatterns = [
-    path("", views.home, name="home"),
-    path("catalogo/", views.productos, name="catalogo"),
-    path(
-        "catalogo/<int:producto_id>/",
-        views.detalle_producto,
-        name="detalle_producto"
-    ),
-    path("acerca-de-mi/", views.acerca_de_mi, name="acerca-de-mi"),
+    path("", HomeView.as_view(), name="home"),
+    path("catalogo/", CatalogoView.as_view(), name="catalogo"),
+    path("acerca-de-mi/", acerca_de_mi, name="acerca-de-mi"),
+    path("producto/<int:producto_id>/", detalle_producto, name="detalle_producto"),
 ]
